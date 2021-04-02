@@ -1,24 +1,13 @@
-import { Telegraf } from 'telegraf'
+import * as dotenv from 'dotenv';
+dotenv.config();
+import { MongoClient } from 'mongodb';
+import { setup } from './bot';
 
+const initialize = async () => {
+    const db = (await MongoClient.connect(process.env.MONGOdb_URI, { useNewUrlParser: true, useUnifiedTopology: true })).db();
+    const bot = setup(db);
 
-const token = process.env.BOT_TOKEN
-if (token === undefined) {
-  throw new Error('BOT_TOKEN must be provided!')
-}
-const bot = new Telegraf(token)
+    bot.launch();
+};
 
-
-
-bot.on('text', (ctx) => {
-  // Using context shortcut
-  ctx.reply(`Hello ${ctx.from.first_name}`)
-
-
-})
-
-
-bot.launch()
-
-// Enable graceful stop
-process.once('SIGINT', () => bot.stop('SIGINT'))
-process.once('SIGTERM', () => bot.stop('SIGTERM'))
+initialize();

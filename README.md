@@ -10,7 +10,7 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 🐳 Docker: (optional, I will show you how to run it directly if you have node.js installed).
-<br/><br/>🦾 Bot Token: you can optain your bot token from [/botfather](https://t.me/botfather) with the <strong>/newbot</strong> command.
+<br/><br/>🦾 Bot Token: you can obtain your bot token from [/botfather](https://t.me/botfather) with the <strong>/newbot</strong> command.
 <br/><br/>🔗 Mongo URI: An easy way to obtain a mongo URI is from [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/register), check out [this tutorial](https://medium.com/@bretcameron/mongodb-a-beginners-guide-8fca0c7787a4) to see how.
 
 
@@ -45,7 +45,7 @@ First, build the image
 docker build .
 ```
 
-Now, run the contaner and map port 3000 on the container to port 3000 on your machine
+Now, run the container and map port 3000 on the container to port 3000 on your machine
 
 ```
 docker run -p 3000:3000 <image_id>

@@ -1,4 +1,4 @@
-import { Composer, Context, Scenes } from "telegraf";
+import { Context, Scenes } from "telegraf";
 
 interface ratings {
   condition?: string;
@@ -11,18 +11,18 @@ interface address {
   location?: object;
   photoURL?: string;
 }
+// Custom session interface
 interface MySession extends Scenes.WizardSession {
   // will be available under `ctx.session.mySessionProp`
   trackingNumber: string;
   rating: ratings;
   address: address;
 }
-
+// Custom Context interface
 export interface MyContext extends Context {
   // will be available under `ctx.myContextProp`
   myContextProp: string;
-
-  // declare session type
+  // will be available under `ctx.session`
   session: MySession;
   // declare scene type
   scene: Scenes.SceneContextScene<MyContext, Scenes.WizardSessionData>;

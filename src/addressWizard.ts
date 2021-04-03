@@ -12,7 +12,7 @@ export const steps = [
       ctx.session.trackingNumber = ctx.message.text;
     }
 
-    ctx.reply("Type your address line 1");
+    ctx.reply("Type your address line 1 📮");
     ctx.session.address = {};
     return ctx.wizard.next();
   },
@@ -21,7 +21,7 @@ export const steps = [
       ctx.session.address.addressline = ctx.message.text;
     }
     ctx.reply(
-      "Now, please send your location",
+      "Now, please send your location 📍",
       Markup.keyboard([Markup.button.locationRequest("Send location")]).resize()
     );
 
@@ -42,10 +42,14 @@ export const steps = [
       const fileId: string = ctx.message.photo[0].file_id;
      await ctx.telegram.getFileLink(fileId).then((url) => {
         ctx.session.address.photoURL = url.href;
-      });
-      ctx.reply("Address has been updated!");
+      });} else if ("text" in ctx.message && ctx.message.text !== '/pass'){
+        ctx.reply('Please send a photo or send /pass');
+        return;
+      }
+
+      ctx.reply("Address has been updated 🎉!");
       return ctx.scene.leave();
-    }
+    
   },
 ];
 

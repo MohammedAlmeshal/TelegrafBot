@@ -1,14 +1,8 @@
 [
-    {
-
-        "package":"Crew neck t-shirt - Black",
-        "dscoOrderId": 32255,
-        "dscoOrderStatus": "shipped",
-        "dscoCreateDate": "2014-01-01T10:15:00+01:00",
-        "dscoLastUpdateDate": "2014-01-01T10:15:00+01:00",
-        "shipCarrier": "USP"
-    
-    }
-
-
+  {
+    "package": "Crew neck t-shirt - Black",
+    "dscoOrderId": 32255,
+    "dscoOrderStatus": "shipped",
+    "shipCarrier": "Aramex"
+  }
 ]

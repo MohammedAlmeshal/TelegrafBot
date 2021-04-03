@@ -1,33 +1,12 @@
 [
     {
-        "poNumber": "ssd2342",
-        "supplierOrderNumber": "929238",
-        "package":"X",
+
+        "package":"Crew neck t-shirt - Black",
         "dscoOrderId": 32255,
         "dscoOrderStatus": "shipped",
-        "dscoRetailerId": 34277,
-        "dscoSupplierId": 8225,
         "dscoCreateDate": "2014-01-01T10:15:00+01:00",
         "dscoLastUpdateDate": "2014-01-01T10:15:00+01:00",
-        "currencyCode": "USD",
-        "shipCarrier": "USP",
-        "shipMethod": "GROUND",
-        "shippingServiceLevelCode": "2"
-    
-    }, {
-        "poNumber": "ssd2342",
-        "supplierOrderNumber": "929238",
-        "package":"X",
-        "dscoOrderId": 32255,
-        "dscoOrderStatus": "shipped",
-        "dscoRetailerId": 34277,
-        "dscoSupplierId": 8225,
-        "dscoCreateDate": "2014-01-01T10:15:00+01:00",
-        "dscoLastUpdateDate": "2014-01-01T10:15:00+01:00",
-        "currencyCode": "USD",
-        "shipCarrier": "USP",
-        "shipMethod": "GROUND",
-        "shippingServiceLevelCode": "2"
+        "shipCarrier": "USP"
     
     }
 

@@ -1,29 +1,11 @@
 import { Markup, Scenes } from "telegraf";
-import { MyContext } from "./interface";
-
-// define rating keyboard
-const ratingKeyboard = Markup.keyboard([
-  ["Very Good 🤩"],
-  ["Good 😃"],
-  ["Ok 😶"],
-  ["Poor 😑"],
-  ["Very Poor 🥴"],
-]);
-
-// define binary answer keyboard
-const yesNoKeyboard = Markup.keyboard([["Yes 👍", "No 👎"], ["N/A ✋"]]);
+import { MyContext } from "../interfaces";
+import { ratingKeyboard, yesNoKeyboard } from "../services/keyboards";
+import { menu } from "../services/keyboards";
 
 // Wizard steps
 const rateWizardSteps = [
-  async (ctx) => {
-    ctx.reply("What is your tracking number ?");
-    return ctx.wizard.next();
-  },
-
   async (ctx: MyContext) => {
-    if ("text" in ctx.message) {
-      ctx.session.trackingNumber = ctx.message.text;
-    }
     ctx.reply(
       "How was the shipment condition ?",
       ratingKeyboard.oneTime().resize()
@@ -69,6 +51,10 @@ const rateWizardSteps = [
     }
     Markup.removeKeyboard();
     ctx.reply("Survey finished!\nThank you 🙏 ");
+    ctx.reply(
+      "Please choose a service from the menu ✨\n\nOr click /help to see my commands 🧰",
+      menu.oneTime().resize()
+    );
     return ctx.scene.leave();
   },
 ];

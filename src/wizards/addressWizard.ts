@@ -1,17 +1,10 @@
 import { Markup, Scenes } from "telegraf";
-import { MyContext } from "./interface";
+import { MyContext } from "../interfaces";
+import { menu } from "../services/keyboards";
+
 
 export const steps = [
-  async (ctx) => {
-    ctx.reply("What is your shipment tracking number ?");
-    return ctx.wizard.next();
-  },
-
   async (ctx: MyContext) => {
-    if ("text" in ctx.message) {
-      ctx.session.trackingNumber = ctx.message.text;
-    }
-
     ctx.reply("Type your address line 1 📮");
     ctx.session.address = {};
     return ctx.wizard.next();
@@ -40,16 +33,20 @@ export const steps = [
   async (ctx: MyContext) => {
     if ("photo" in ctx.message) {
       const fileId: string = ctx.message.photo[0].file_id;
-     await ctx.telegram.getFileLink(fileId).then((url) => {
+      await ctx.telegram.getFileLink(fileId).then((url) => {
         ctx.session.address.photoURL = url.href;
-      });} else if ("text" in ctx.message && ctx.message.text !== '/pass'){
-        ctx.reply('Please send a photo or send /pass');
-        return;
-      }
+      });
+    } else if ("text" in ctx.message && ctx.message.text !== "/pass") {
+      ctx.reply("Please send a photo or send /pass");
+      return;
+    }
 
-      ctx.reply("Address has been updated 🎉!");
-      return ctx.scene.leave();
-    
+    await ctx.reply("Address has been updated 🎉!");
+    ctx.reply(
+      "Please choose a service from the menu ✨\n\nOr click /help to see my commands 🧰",
+      menu.oneTime().resize()
+    );
+    return ctx.scene.leave();
   },
 ];
 
